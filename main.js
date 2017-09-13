@@ -24,7 +24,7 @@ ipcMain.on('rpc-request', function(event, rpc, arg) {
   event.returnValue = 
   `
   { 
-   "json": "value"
+   "address": "pUYofdfsgasdpsdpfsaddressrofl"
   }
   `;
 });
