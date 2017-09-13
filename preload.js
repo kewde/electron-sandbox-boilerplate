@@ -5,8 +5,8 @@ const {ipcRenderer} = require('electron')
 
 console.log('preload init');
 
-function sendIPCMessage (type, msg) {
-  return ipcRenderer.sendSync('rpc-request', msg);
+function sendIPCMessage (rpc, arg) {
+  return ipcRenderer.sendSync('rpc-request', rpc, arg);
 }
 
 window.sendMessage = sendIPCMessage
