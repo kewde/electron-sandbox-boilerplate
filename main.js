@@ -19,8 +19,8 @@ console.log("Main initialized");
 // In main process.
 const ipcMain = require('electron').ipcMain;
 
-ipcMain.on('rpc-request', function(event, msg) {
-  console.log("RPC REQUEST: " + msg); 
+ipcMain.on('rpc-request', function(event, rpc, msg) {
+  console.log("RPC REQUEST: " + rpc + " " + msg); 
   event.returnValue = 
   `
   { 
