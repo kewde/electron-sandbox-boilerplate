@@ -1,3 +1,14 @@
+/*
+
+  This is an extended version of the preload script that applies a strict whitelist of channels
+  Channels that are not in the whitelist are reject and never get send through ipcRenderer.
+
+  To use this preload script just change the hardcoded values in validEvents.
+
+  Credits: gerges (on the atom slack), he provided me with the code, I made the minor
+  edit of hardcoded validEvents.
+*/
+
 const {ipcRenderer} = require('electron');
 
 const flatten = (obj) => Object.keys(obj)
