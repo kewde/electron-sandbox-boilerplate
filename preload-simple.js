@@ -16,11 +16,11 @@ function sendIPCMessage (rpc, arg) {
 }
   /*
     For security reasons, you can not allow custom channels. You MUST use static predefined channels
-    for communications between the renderer and the main process. There are certain IPC channel that
-    you can use to perform malicious acts.
+    for communications between the renderer and the main process. There are certain IPC channels that
+    an attacker can use to perform malicious acts.
     
     VULNERABLE example:
-    function sendMessage(channel, arg) {
+    function sendIPCMessage(channel, arg) {
       return ipcRenderer.sendSync(channel, arg);
     }
     
