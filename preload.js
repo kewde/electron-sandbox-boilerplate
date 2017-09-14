@@ -26,6 +26,6 @@ function sendIPCMessage (rpc, arg) {
     Lesson: use HARDCODED CHANNELS.  
   */
 
-// we want to allow our untrusted content to send messages to the main process.
+// we want to allow our untrusted content to send messages to the main process, so we bind it to the window scope.
 window.sendMessage = sendIPCMessage
 
