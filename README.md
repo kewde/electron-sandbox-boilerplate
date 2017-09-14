@@ -1,6 +1,8 @@
 # electron-sandbox
 A simple example of a sandboxed renderer process with the ability to communicate to the backend (main.js) through IPC in a _secure_ manner.
 
+If you're developing an electron application then I strongly recommend you to read the [Blackhat Electron Security Checklist](https://www.blackhat.com/docs/us-17/thursday/us-17-Carettoni-Electronegativity-A-Study-Of-Electron-Security-wp.pdf).
+
 ## Why?
 If you're dealing with potentially untrusted content (displaying videos,images, text, etc..) in your Electron application, then you should run it with the sandbox enabled. The sandbox provided by Chrome is very strong, it has the ability to mitigate zeroday exploits within the Chrome browser engine (Blink) by restricting the ability of the attacker.
 
@@ -27,7 +29,20 @@ Seperating the browser from the rendering engine actually doesn't do shit for se
 
 Protecting against such bugs is easier if we maintain two levels of access. The renderer processes is a baby. Do you know where babies like to play? They play in **a sandbox**, well it's a magical sandbox. Any sandcastle you build is destroyed afterwards. You can't escape the sandbox (or atleast it's designed to be unescapable, but bugs happen..). Anything you do in the sandbox, stays in the sandbox. Technically speaking, the sandbox is a way to encapsulate existing code and execute it in the locked-down process with safeguards to prevent it from accessing or doing certain things. 
 
-The browser/main generally execute in such a sandbox, it wields a lot more power than a renderer process. But there is are ways for processes to communicate **Inter-Process Communication** or IPC for short.
+The browser/main do *not* execute in such a sandbox, so it wields a lot more power than a renderer process. The renderer process is very limited in what it can do when it's sandboxed, but it does have the ability to communicate with the browser process over **Inter-Process Communication** or IPC for short. 
+
+Electron is a bit of a different beast than Chromium, as it also provides you with a very powerful NodeJS API by default with your electron application. You might have already guessed it, the sandbox is disabled by default. 
+
+### Good reads about Chromium & their sandbox:
+http://blog.azimuthsecurity.com/2010/05/chrome-sandbox-part-1-of-3-overview.html
+http://blog.azimuthsecurity.com/2010/08/chrome-sandbox-part-2-of-3-ipc.html
+
+### Good reads about how the sandbox works with electron & NodeJS
+
+A quite in-depth presentation about the security of electron and how it can be improved:
+https://www.blackhat.com/docs/us-17/thursday/us-17-Carettoni-Electronegativity-A-Study-Of-Electron-Security.pdf
+https://electron.atom.io/docs/api/sandbox-option/
+https://www.blackhat.com/docs/us-17/thursday/us-17-Carettoni-Electronegativity-A-Study-Of-Electron-Security-wp.pdf
 
 ## preload-simple
 A very simple pre-load script that servers as a dummy for tutorial purposes.
