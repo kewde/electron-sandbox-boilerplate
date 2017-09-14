@@ -7,6 +7,7 @@ app.on('ready', () => {
     webPreferences: {
       nodeIntegration: false,
       sandbox: true,
+      contextIsolation: true,
       preload: path.join(__dirname, 'preload.js')
     }
   })
