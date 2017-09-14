@@ -8,6 +8,24 @@ console.log('preload init');
 function sendIPCMessage (rpc, arg) {
   return ipcRenderer.sendSync('rpc-request', rpc, arg);
 }
+  /*
+    For security reasons, you can not allow custom channels. You MUST use static predefined channels
+    for communications between the renderer and the main process. There are certain IPC channel that
+    you can use to perform malicious acts.
+    
+    VULNERABLE example:
+    function sendMessage(channel, arg) {
+      return ipcRenderer.sendSync(channel, arg);
+    }
+    
+    The above example is vulnerable.
+    app = window.sendMessage('ELECTRON_BROWSER_GET_BUILTIN', 'app');
+    The code above exploits the vulnerable sendMessage function in such a way that it
+    returns the handle to app, causing a privilege escalation.
+    
+    Lesson: use HARDCODED CHANNELS.  
+  */
 
+// we want to allow our untrusted content to send messages to the main process.
 window.sendMessage = sendIPCMessage
 
