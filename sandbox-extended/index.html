@@ -1,0 +1,27 @@
+
+<script>
+function sendValidIpcMessage() {
+	var s = new window.SafeIpcRenderer();
+
+	// start the rpc
+	var firstTest  = s.sendSync('rpc-start');
+	alert(firstTest);
+
+	// do a request to the rpc
+	var secondTest = s.sendSync('rpc-request', 'getnewaddress', 'kewde');
+	alert(secondTest);
+}
+
+function sendEvilIpcMessage() {
+	var s = new window.SafeIpcRenderer(); 
+	s.sendSync('ELECTRON_BROWSER_GET_BUILTIN', 'app');
+	/* evil channel, blocked */
+}
+</script>
+<!-- Let's trigger a nice whitelisted channel :) -->
+<input type="button" value="Send whitelisted message :) !" onclick="sendValidIpcMessage()" />
+
+<br />
+<br />
+<!-- Let's trigger a nasty internal channel -->
+<input type="button" value="Send evil message :( !" onclick="sendEvilIpcMessage()" />
