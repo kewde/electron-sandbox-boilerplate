@@ -1,6 +1,7 @@
 /*
+	preload-simple.js: lives in the renderer process.
 	This is a super simple example of a preloader that uses a _static_ channel (rpc-request).
-	A more versatile filter can be found, preload-extensive.js.
+	A more versatile filter can be found, /sandbox-extended/preload-extensive.js.
 */
 
 // This file is loaded whenever a javascript context is created. It runs in a
