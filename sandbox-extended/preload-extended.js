@@ -1,5 +1,6 @@
 /*
-
+  preload-extended.js: lives in the renderer process.
+  
   This is an extended version of the preload script that applies a strict whitelist of channels
   Channels that are not in the whitelist are reject and never get send through ipcRenderer.
 
