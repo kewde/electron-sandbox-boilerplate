@@ -36,7 +36,8 @@ class SafeIpcRenderer {
     const protect = (fn) => {
       return (channel, ...args) => {
         if (!validEvents.includes(channel)) {
-          throw new Error(`Blocked access to unknown channel ${channel} from the renderer`);
+          throw new Error(`Blocked access to unknown channel ${channel} from the renderer. 
+                          Add channel to validEvents variable in preload.js in case it is legitimate.`);
         }
         return fn.apply(ipcRenderer, [channel].concat(args));
       };
