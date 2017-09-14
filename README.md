@@ -34,14 +34,19 @@ The browser/main do *not* execute in such a sandbox, so it wields a lot more pow
 Electron is a bit of a different beast than Chromium, as it also provides you with a very powerful NodeJS API by default with your electron application. You might have already guessed it, the sandbox is disabled by default. 
 
 ### Good reads about Chromium & their sandbox:
+
 http://blog.azimuthsecurity.com/2010/05/chrome-sandbox-part-1-of-3-overview.html
+
 http://blog.azimuthsecurity.com/2010/08/chrome-sandbox-part-2-of-3-ipc.html
 
 ### Good reads about how the sandbox works with electron & NodeJS
 
 A quite in-depth presentation about the security of electron and how it can be improved:
+
 https://www.blackhat.com/docs/us-17/thursday/us-17-Carettoni-Electronegativity-A-Study-Of-Electron-Security.pdf
+
 https://electron.atom.io/docs/api/sandbox-option/
+
 https://www.blackhat.com/docs/us-17/thursday/us-17-Carettoni-Electronegativity-A-Study-Of-Electron-Security-wp.pdf
 
 ## preload-simple
