@@ -3,6 +3,8 @@ A simple example of a sandboxed renderer process with the ability to communicate
 
 If you're developing an electron application then I strongly recommend you to read the [Blackhat Electron Security Checklist](https://www.blackhat.com/docs/us-17/thursday/us-17-Carettoni-Electronegativity-A-Study-Of-Electron-Security-wp.pdf).
 
+![overview](https://www.chromium.org/developers/design-documents/site-isolation/ChromeSiteIsolationProject-arch.png?attredirects=0)
+
 ## Why?
 If you're dealing with potentially untrusted content (displaying videos,images, text, etc..) in your Electron application, then you should run it with the sandbox enabled. The sandbox provided by Chrome is very strong, it has the ability to mitigate zeroday exploits within the Chrome browser engine (Blink) by restricting the ability of the attacker.
 
