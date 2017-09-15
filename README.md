@@ -9,7 +9,11 @@ If you're developing an electron application then I strongly recommend you to re
 ## Why?
 If you're dealing with potentially untrusted content (displaying videos,images, text, etc..) in your Electron application, then you should run it with the sandbox enabled. The sandbox provided by Chrome is very strong, it has the ability to mitigate zeroday exploits within the Chrome browser engine (Blink) by restricting the ability of the attacker.
 
-The sandbox is disabled by default. Enabling it however removes the ability to use NodeJS freely within the renderer process. These backend tasks should be moved from the renderer process to the main process. The renderer process can trigger these tasks and get return values. 
+The sandbox is disabled by default in Electron (not in Chromium). Enabling the sandbox removes the ability to use NodeJS freely within the renderer process. Code that uses NodeJS should be moved from the renderer process to the main process. The sandboxed renderer process can then trigger the execution of these tasks (in the privileged browser process) and get the return values. The renderer process is restricted to the tasks that you allow it to execute, however a clever attacker could potentially use them to his/her benefit so construct them carefully. Give the renderer process the least amount of privilege, "make it dumb". 
+
+Things renderer processes shouldn't be able do:
+* be able to execute/create a new process
+* freely read and write to whatever file they want
 
 ## Terminology
 Electron is built on top of Chromium, a multi-process browser.  What's so important you might wonder, multi-process sounds really boring. Well you're probably right about that one. The reason for being a multi-process browser is a simple one: security. 
