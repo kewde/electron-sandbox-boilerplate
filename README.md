@@ -6,11 +6,11 @@ A simple example of a sandboxed renderer process with the ability to communicate
 If you're developing an electron application then I strongly recommend you to read the [Blackhat Electron Security Checklist](https://www.blackhat.com/docs/us-17/thursday/us-17-Carettoni-Electronegativity-A-Study-Of-Electron-Security-wp.pdf).
 
 ## preload-simple
-A very simple pre-load script that servers as a dummy for tutorial purposes.
+A very simple pre-load script that serves as a dummy for tutorial purposes.
 
 ## preload-extended
 A good implementation of a secure preload script, and main process initialization (main.js). 
-Use this version in production!
+You can use this version in production.
 
 ## usage
 
