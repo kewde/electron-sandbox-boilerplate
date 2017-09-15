@@ -3,7 +3,6 @@ A simple example of a sandboxed renderer process with the ability to communicate
 
 If you're developing an electron application then I strongly recommend you to read the [Blackhat Electron Security Checklist](https://www.blackhat.com/docs/us-17/thursday/us-17-Carettoni-Electronegativity-A-Study-Of-Electron-Security-wp.pdf).
 
-![overview](https://www.chromium.org/developers/design-documents/site-isolation/ChromeSiteIsolationProject-arch.png?attredirects=0)
 
 ## Why?
 If you're dealing with potentially untrusted content (displaying videos,images, text, etc..) in your Electron application, then you should run it with the sandbox enabled. The sandbox provided by Chrome is very strong, it has the ability to mitigate zeroday exploits within the Chrome browser engine (Blink) by restricting the ability of the attacker.
@@ -23,6 +22,8 @@ It's exactly this engine that's known to contain bugs. Have you ever been infect
 You haven't forgetten the multi-process thing right? Well the chromium browser actually executes this vulnerable rendering engine in its own processes. Multiple renderer process co-exist on the same host. 
 
 _**Renderer process**:_ the renderer processes evaluate and render the html, css and js.
+
+![overview](https://www.chromium.org/developers/design-documents/site-isolation/ChromeSiteIsolationProject-arch.png?attredirects=0)
 
 You might wonder, what executes the render processes? That's a good question, with a simple answer:
 the _browser process_ or also known as the _main process_. You can kinda look at the browser/main process as the boss who makes sure his minions are working.
@@ -49,6 +50,7 @@ https://www.blackhat.com/docs/us-17/thursday/us-17-Carettoni-Electronegativity-A
 
 https://electron.atom.io/docs/api/sandbox-option/
 
+![Read me](https://i.imgur.com/7RX4Ame.png)
 https://www.blackhat.com/docs/us-17/thursday/us-17-Carettoni-Electronegativity-A-Study-Of-Electron-Security-wp.pdf
 
 ## preload-simple
