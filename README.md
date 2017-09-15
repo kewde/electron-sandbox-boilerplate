@@ -41,7 +41,7 @@ Seperating the browser from the rendering engine actually doesn't do shit for se
 
 Protecting against such bugs is easier if we maintain two levels of access. The renderer processes is a baby. Do you know where babies like to play? They play in **a sandbox**, well it's a magical sandbox. Any sandcastle you build is destroyed afterwards. You can't escape the sandbox (or atleast it's designed to be unescapable, but bugs happen..). Anything you do in the sandbox, stays in the sandbox. Technically speaking, the sandbox is a way to encapsulate existing code and execute it in the locked-down process with safeguards to prevent it from accessing or doing certain things. 
 
-The browser/main do *not* execute in such a sandbox, so it wields a lot more power than a renderer process. The renderer process is very limited in what it can do when it's sandboxed, but it does have the ability to communicate with the browser process over **Inter-Process Communication** or IPC for short. 
+The browser/main process does *not* execute in such a sandbox, so it wields a lot more power than a renderer process. The renderer process is very limited in what it can do when it's sandboxed, but it does have the ability to communicate with the browser process over **Inter-Process Communication** or IPC for short. 
 
 Electron is a bit of a different beast than Chromium, as it also provides you with a very powerful NodeJS API by default with your electron application. You might have already guessed it, the sandbox is disabled by default. 
 
