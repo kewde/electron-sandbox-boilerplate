@@ -1,4 +1,4 @@
-![](http://t3n.de/news/wp-content/uploads/2016/08/electron-framework-hero-620x326.jpg)
+![](https://i.ytimg.com/vi/8YP_nOCO-4Q/maxresdefault.jpg)
 
 # electron-sandbox
 A simple example of a sandboxed renderer process with the ability to communicate to the backend (main.js) through IPC in a _secure_ manner.
