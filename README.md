@@ -27,7 +27,7 @@ The sandbox is disabled by default in Electron (not in Chromium). Enabling the s
 Things renderer processes shouldn't be able do:
 * be able to execute/create a new process
 * freely read and write to whatever file they want
-* freally pick a channel to send IPC messages over (use a whitefilter)
+* freely pick a channel to send IPC messages over (use a whitefilter instead)
 
 ## Terminology
 Electron is built on top of Chromium, a multi-process browser.  What's so important you might wonder, multi-process sounds really boring. Well you're probably right about that one. The reason for being a multi-process browser is a simple one: security. 
