@@ -24,8 +24,8 @@ If you're dealing with potentially untrusted content (displaying videos,images, 
 
 The sandbox is disabled by default in Electron (not in Chromium). Enabling the sandbox removes the ability to use NodeJS freely within the renderer process. Code that uses NodeJS should be moved from the renderer process to the main process. The sandboxed renderer process can then trigger the execution of these tasks (in the privileged browser process) and get the return values. The renderer process is restricted to the tasks that you allow it to execute, however a clever attacker could potentially use them to his/her benefit so construct them carefully. Give the renderer process the least amount of privilege, "make it dumb". 
 
-Things renderer processes shouldn't be able do:
-* be able to execute/create a new process
+Things renderer processes shouldn't be able to do:
+* execute/create a new process
 * freely read and write to whatever file they want
 * freely pick a channel to send IPC messages over (use a whitefilter instead)
 
