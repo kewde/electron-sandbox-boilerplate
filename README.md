@@ -14,13 +14,14 @@ The sandbox is disabled by default in Electron (not in Chromium). Enabling the s
 Things renderer processes shouldn't be able do:
 * be able to execute/create a new process
 * freely read and write to whatever file they want
+* freally pick a channel to send IPC messages over (use a whitefilter)
 
 ## Terminology
 Electron is built on top of Chromium, a multi-process browser.  What's so important you might wonder, multi-process sounds really boring. Well you're probably right about that one. The reason for being a multi-process browser is a simple one: security. 
 
-The idea behind it is equally simple, we split the weak from the strong. Code has bugs, and those bugs are sometimes exploitable. There's a thing about bugs, as the complexity rises, their numbers rise too. Anddd the engine, that turns html, css & js into a visible thing on your screen, is one damn complex thing. 
+The idea behind it is equally simple, we split the weak from the strong. Code has bugs, and those bugs are sometimes exploitable. There's a thing about bugs, as the complexity rises, their numbers rise too. The engine, that turns html, css & js into a visible thing on your screen, is one damn complex thing. 
 
-_**rendering**_: turns code into what you see on your screen.
+_**rendering**_: turning code into what you see on your screen.
 
 A lot of the complexity sits in the rendering engine, it's also the engine that is responsable for executing the JavaScript being loaded in the html files!
 It's exactly this engine that's known to contain bugs. Have you ever been infected by visiting a website? The malicious entity found a way to exploit a bug in the rendering engine. 
@@ -32,7 +33,9 @@ _**Renderer process**:_ the renderer processes evaluate and render the html, css
 ![overview](https://www.chromium.org/developers/design-documents/site-isolation/ChromeSiteIsolationProject-arch.png?attredirects=0)
 
 You might wonder, what executes the render processes? That's a good question, with a simple answer:
-the _browser process_ or also known as the _main process_. You can kinda look at the browser/main process as the boss who makes sure his minions are working.
+the _**browser process**_ or also known as the _**main process**_. You can kinda look at the browser/main process as the boss who makes sure his minions are working. 
+
+Pro tip: Create two folders: 'render' and 'main'. This will help you keep track of which files are executed in the main process and which ones are executed in the renderer process.
 
 Seperating the browser from the rendering engine actually doesn't do shit for security. Yeah I lied lol. Merely splitting it in multiple processes doesn't do crap for security. This is where the real magic happens.
 
