@@ -5,6 +5,19 @@ A simple example of a sandboxed renderer process with the ability to communicate
 
 If you're developing an electron application then I strongly recommend you to read the [Blackhat Electron Security Checklist](https://www.blackhat.com/docs/us-17/thursday/us-17-Carettoni-Electronegativity-A-Study-Of-Electron-Security-wp.pdf).
 
+## preload-simple
+A very simple pre-load script that servers as a dummy for tutorial purposes.
+
+## preload-extended
+A good implementation of a secure preload script, and main process initialization (main.js). 
+Use this version in production!
+
+## usage
+
+```
+$ npm install electron
+$ electron main.js
+```
 
 ## Why?
 If you're dealing with potentially untrusted content (displaying videos,images, text, etc..) in your Electron application, then you should run it with the sandbox enabled. The sandbox provided by Chrome is very strong, it has the ability to mitigate zeroday exploits within the Chrome browser engine (Blink) by restricting the ability of the attacker.
@@ -51,6 +64,8 @@ http://blog.azimuthsecurity.com/2010/05/chrome-sandbox-part-1-of-3-overview.html
 
 http://blog.azimuthsecurity.com/2010/08/chrome-sandbox-part-2-of-3-ipc.html
 
+Don't bother looking for part 3 - the author never wrote it.
+
 ### Good reads about how the sandbox works with electron & NodeJS
 
 A quite in-depth presentation about the security of electron and how it can be improved:
@@ -61,9 +76,3 @@ https://electron.atom.io/docs/api/sandbox-option/
 
 https://www.blackhat.com/docs/us-17/thursday/us-17-Carettoni-Electronegativity-A-Study-Of-Electron-Security-wp.pdf
 
-## preload-simple
-A very simple pre-load script that servers as a dummy for tutorial purposes.
-
-## preload-extended
-A good implementation of a secure preload script, and main process initialization (main.js). 
-Use this version in production!
