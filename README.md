@@ -50,7 +50,6 @@ https://www.blackhat.com/docs/us-17/thursday/us-17-Carettoni-Electronegativity-A
 
 https://electron.atom.io/docs/api/sandbox-option/
 
-![Read me](https://i.imgur.com/7RX4Ame.png)
 https://www.blackhat.com/docs/us-17/thursday/us-17-Carettoni-Electronegativity-A-Study-Of-Electron-Security-wp.pdf
 
 ## preload-simple
