@@ -28,17 +28,13 @@ const flatten = (obj) => Object.keys(obj)
  *
  */
 class SafeIpcRenderer {
-  constructor () {
-
-    /*
-      Modify the whitefilter validEvents.
-    */
-    const validEvents = flatten(["rpc-start", "rpc-request"]);
+  constructor (events) {
+    const validEvents = flatten(events);
     const protect = (fn) => {
       return (channel, ...args) => {
         if (!validEvents.includes(channel)) {
           throw new Error(`Blocked access to unknown channel ${channel} from the renderer. 
-                          Add channel to validEvents variable in preload.js in case it is legitimate.`);
+                          Add channel to whitelist in preload.js in case it is legitimate.`);
         }
         return fn.apply(ipcRenderer, [channel].concat(args));
       };
@@ -53,4 +49,10 @@ class SafeIpcRenderer {
   }
 }
 
-window.SafeIpcRenderer = SafeIpcRenderer;
+/*
+   Modify the whitefilter here.
+*/
+window.ipc = new SafeIpcRenderer([
+  "rpc-start",
+  "rpc-request"
+]);
