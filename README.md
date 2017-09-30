@@ -1,5 +1,7 @@
 ![](electron-sandbox.jpeg)
 
+> This repository has not been reviewed for security flaws, use at your own risk.
+
 # electron-sandbox
 A simple example of a sandboxed renderer process with the ability to communicate to the backend (main.js) through IPC in a _secure_ manner.
 
