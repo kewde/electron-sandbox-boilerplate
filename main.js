@@ -11,7 +11,8 @@ app.on('ready', () => {
   win = new BrowserWindow({
     webPreferences: {
       /*
-        nodeIntegration is disabled, JavaScriptis unable to leverage Node.js primitives and modules.
+        nodeIntegration is disabled, JavaScript is unable to leverage Node.js primitives and modules.
+        Note: sandbox:true should disable this by default, but we do it anyways.
       */
       nodeIntegration: false,
       
