@@ -34,16 +34,16 @@ Things renderer processes shouldn't be able to do:
 ## Terminology
 Electron is built on top of Chromium, a multi-process browser.  What's so important you might wonder, multi-process sounds really boring. Well you're probably right about that one. The reason for being a multi-process browser is a simple one: security. 
 
-The idea behind it is equally simple, we split the weak from the strong. Code has bugs, and those bugs are sometimes exploitable. There's a thing about bugs, as the complexity rises, their numbers rise too. The engine, that turns html, css & js into a visible thing on your screen, is one damn complex thing. 
+The idea behind it is equally simple, we split the weak from the strong. Code has bugs, and those bugs are sometimes exploitable. The thing is, as the complexity of code rises, the numbers of bugs rises too. The engine, that turns html, css & js into a visible thing on your screen, is one damn complex thing. 
 
 _**rendering**_: turning code into what you see on your screen.
 
 A lot of the complexity sits in the rendering engine, it's also the engine that is responsable for executing the JavaScript being loaded in the html files!
-It's exactly this engine that's known to contain bugs. Have you ever been infected by visiting a website? The malicious entity found a way to exploit a bug in the rendering engine. 
+It's exactly this engine that's known to contain bugs. Have you ever been infected by visiting a website? The malicious entity probably found a way to exploit a bug in the rendering engine. 
 
 You haven't forgetten the multi-process thing right? Well the chromium browser actually executes this vulnerable rendering engine in its own processes. Multiple renderer process co-exist on the same host. 
 
-_**Renderer process**:_ the renderer processes evaluate and render the html, css and js.
+_**Renderer process**:_ the renderer processes evaluate and render the html, css and executes js.
 
 ![overview](https://www.chromium.org/developers/design-documents/site-isolation/ChromeSiteIsolationProject-arch.png?attredirects=0)
 
