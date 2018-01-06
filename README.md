@@ -17,9 +17,11 @@ You can use this version in production.
 ## usage
 
 ```
-$ npm install electron
+$ npm install -g electron
 $ electron --enable-sandbox main.js
 ```
+
+The --enable-sandbox parameter is critical here. The sandbox is not enabled without it.
 
 ## Why?
 If you're dealing with potentially untrusted content (displaying videos,images, text, etc..) in your Electron application, then you should run it with the sandbox enabled. The sandbox provided by Chrome is very strong, it has the ability to mitigate zeroday exploits within the Chrome browser engine (Blink) by restricting the ability of the attacker.
