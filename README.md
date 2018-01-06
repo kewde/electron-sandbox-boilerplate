@@ -18,7 +18,7 @@ You can use this version in production.
 
 ```
 $ npm install electron
-$ electron main.js
+$ electron --enable-sandbox main.js
 ```
 
 ## Why?
