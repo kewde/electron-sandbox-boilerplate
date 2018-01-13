@@ -7,11 +7,11 @@ A simple code example of a sandboxed renderer process with the ability to commun
 
 If you're developing an electron application then I strongly recommend you to read the [Blackhat Electron Security Checklist by Cerettoni](https://www.blackhat.com/docs/us-17/thursday/us-17-Carettoni-Electronegativity-A-Study-Of-Electron-Security-wp.pdf).
 
-## preload-simple
+## sandbox-preload-simple
 A very simple pre-load script that serves as a dummy for tutorial purposes.
 
-## preload-extended
-A pretty good implementation of a secure preload script, and main process initialization (main.js). It's available in the subfolder named `preload-extended`.
+## sandbox-preload-extended
+A pretty good implementation of a secure preload script, and main process initialization (main.js). It's available in the subfolder named `sandbox-preload-extended`.
 You can use this version in production.
 
 
@@ -71,7 +71,7 @@ You haven't forgotten the multiprocess thing right? Well the chromium browser ac
 
 _**Renderer process**:_ the renderer processes evaluate and render the html, css and executes js.
 
-![overview](/res/electron-sandbox/ChromeSiteIsolationProject-arch.png)
+![overview](https://kewde.github.io/res/electron-sandbox/ChromeSiteIsolationProject-arch.png)
 
 You might wonder, what executes the render processes? That's a good question, with a simple answer:
 the _**browser process**_ or also known as the _**main process**_. You can kinda look at the browser/main process as the boss who makes sure his minions are working. 
