@@ -12,6 +12,16 @@
 
 const {ipcRenderer} = require('electron');
 
+
+/*
+  Experimental security feature:
+        We set the global "require" variable to null after importing what we need.
+        Given that there is an exploit within the preload context, they lost require atleast.
+*/
+require = null;
+
+
+
 const flatten = (obj) => Object.keys(obj)
   .reduce((acc, key) => {
     const val = obj[key];

@@ -4,7 +4,7 @@ function sendValidIpcMessage() {
 	var s = window.ipc;
 
 	// start the rpc
-	var firstTest  = s.sendSync('rpc-start');
+	var firstTest  = s.sendSync('rpc-start', 'oneleftundefined');
 	alert(firstTest);
 
 	// do a request to the rpc
