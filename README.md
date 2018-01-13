@@ -1,11 +1,4 @@
----
-layout: post
-date: 2017-10-27 09:00:00 UTC
-title: Electron-sandbox - creating more secure electron applications 
-description: A simple code example of a sandboxed renderer process with the ability to communicate with backend (main.js) through IPC in a _secure_ manner.
----
-
-![](/res/electron-sandbox/electron-sandbox.jpeg)
+![](electron-sandbox.jpeg)
 
 > This repository has not been reviewed for security flaws by external parties, use at your own risk.
 
