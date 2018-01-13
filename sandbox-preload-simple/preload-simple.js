@@ -16,7 +16,7 @@ const {ipcRenderer} = require('electron')
         We set the global "require" variable to null after importing what we need. 
         Given that there is an exploit within the preload context, they lost require atleast.
 */
-require = null;
+require = undefined;
 
 
 console.log('preload init');
