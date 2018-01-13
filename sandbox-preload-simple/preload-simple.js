@@ -13,7 +13,7 @@ const {ipcRenderer} = require('electron')
 
 /*
   Experimental security feature:
-        We set the global "require" variable to null after importing what we need. 
+        We set the global "require" variable to undefined after importing what we need. 
         Given that there is an exploit within the preload context, they lost require atleast.
 */
 require = undefined;
