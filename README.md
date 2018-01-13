@@ -21,7 +21,7 @@ You can use this version in production.
 
 ```
 $ npm install -g electron
-$ cd sandbox-preload-extended
+$ cd sandbox-preload-simple
 $ electron --enable-sandbox main.js
 ```
 
