@@ -27,6 +27,11 @@ $ electron --enable-sandbox main.js
 
 The --enable-sandbox parameter is critical here. The sandbox is not enabled without it.
 
+## packaging distributions
+
+**WARNING:** Due to the fact that --enable-sandbox is required, the current electron-builder does not enable you to sandbox your application properly.
+I'm working on this, check https://github.com/kewde/electron-sandbox-boilerplate/issues/7 for more information on the status.
+
 ## purpose
 If you're dealing with potentially untrusted content (displaying videos,images, text, etc..) in your Electron application, then you should run it with the sandbox enabled. The sandbox provided by Chrome is considered among the best in the browser space, it has the ability to mitigate certain zeroday exploits within the Chrome browser engine (Blink) by restricting the ability of what the attacker can do.
 
@@ -55,7 +60,7 @@ main -> renderer: OK deleteFile CONFIG
 ```
 
 
-## Terminology
+## terminology
 Electron is built on top of Chromium, a multiprocess browser.  What's so important you might wonder, multiprocess sounds really boring. Well you're probably right about that one. The reason for being a multiprocess browser is a simple one: security.
 
 The idea behind it is equally simple, we split the weak from the strong. Code has bugs, and those bugs are sometimes exploitable. The thing is, as the complexity of code rises, the numbers of bugs rises too. The engine, that turns html, css & js into a visible thing on your screen, is one damn complex thing.
