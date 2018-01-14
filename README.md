@@ -32,6 +32,10 @@ The --enable-sandbox parameter is critical here. The sandbox is not enabled with
 **WARNING:** Due to the fact that --enable-sandbox is required, the current electron-builder does not enable you to sandbox your application properly.
 I'm working on this, check https://github.com/kewde/electron-sandbox-boilerplate/issues/7 for more information on the status.
 
+## security assumptions
+
+A malicious attacker able to break into the scope / context (?) of the SafeIpcRenderer has full control over the ipcRenderer, and can thus enjoy the benefits of an unfiltered ipcRenderer.
+
 ## purpose
 If you're dealing with potentially untrusted content (displaying videos,images, text, etc..) in your Electron application, then you should run it with the sandbox enabled. The sandbox provided by Chrome is considered among the best in the browser space, it has the ability to mitigate certain zeroday exploits within the Chrome browser engine (Blink) by restricting the ability of what the attacker can do.
 
