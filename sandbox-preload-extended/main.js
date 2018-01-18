@@ -36,10 +36,10 @@ app.on('ready', () => {
         The preload script binds a specific function to the window. The function has the ability to
         execute IPC messages without giving untrusted content complete access to ipcRenderer.
       */
-      preload: path.join(__dirname, 'renderer', 'preload-extended.js')
+      preload: path.join(__dirname, 'preload-extended.js')
     }
   })
-  win.loadURL('file://' + __dirname + '/renderer/index.html')
+  win.loadURL('file://' + __dirname + '/index.html')
 })
 
 process.stdout.write("Main initialized");
