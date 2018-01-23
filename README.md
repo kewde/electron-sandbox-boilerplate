@@ -7,6 +7,9 @@ A simple code example of a sandboxed renderer process with the ability to commun
 
 If you're developing an electron application then I strongly recommend you to read the [Blackhat Electron Security Checklist by Cerettoni](https://www.blackhat.com/docs/us-17/thursday/us-17-Carettoni-Electronegativity-A-Study-Of-Electron-Security-wp.pdf).
 
+## security updates
+23th October 2018: Update Electron to 1.7.11 to fix [CVE-2018-1000006](https://electronjs.org/blog/protocol-handler-fix)
+
 ## sandbox-preload-simple
 A very simple pre-load script that serves as a dummy for tutorial purposes.
 
