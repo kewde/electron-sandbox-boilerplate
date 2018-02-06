@@ -1,0 +1,14 @@
+
+<script>
+
+function sendValidIpcMessage() {
+	chrome.ipcRenderer.on('rpc', (event, arg) => {
+		console.log('[RPC] reply: ' + arg);
+	});
+	chrome.ipcRenderer.send('rpc', '1', '2');
+}
+
+</script>
+<!-- Let's trigger a nice whitelisted channel :) -->
+<input type="button" value="Send whitelisted message :) !" onclick="sendValidIpcMessage()" />
+

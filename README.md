@@ -10,6 +10,24 @@ If you're developing an electron application then I strongly recommend you to re
 ## security updates
 23th October 2018: Update Electron to 1.7.11 to fix [CVE-2018-1000006](https://electronjs.org/blog/protocol-handler-fix)
 
+## overview
+If you're an application developer looking to create a sandboxed application, I highly recommend looking into [Muon](https://github.com/brave/muon).
+
+|                          | sandbox | sandboxed distributables | Electron fork |
+|--------------------------|---------|--------------------------|---------------|
+| muon-simple              |      y  |            y             | Muon          |
+| sandbox-preload-simple   |      y  |          no              | Electron      |
+| sandbox-preload-extended |      y  |          no              | Electron      |
+
+
+## muon-simple
+After a lot of experimenting with electron, I've decided that it wasn't the best fit for my purpose.
+Unlike Electron, Muon exposes a 'pure' Chrome ipcRenderer to the renderer process that has no internal 'ELECTRON' channels that can be used to do evil stuff.
+So we don't need a whitelist filter on the ipcRenderer in a preloader (like the examples below).
+
+Also if you want to package your application into .exe, .deb, or w/e format for distribution then you'll want to use Muon.
+The electron-builder does not provide a way to start with `--enable-sandbox` as far as I know.
+
 ## sandbox-preload-simple
 A very simple pre-load script that serves as a dummy for tutorial purposes.
 
@@ -23,12 +41,13 @@ You can use this version in production.
 ## usage
 
 ```
-$ npm install -g electron
 $ cd sandbox-preload-simple
-$ electron --enable-sandbox main.js
+$ yarn install
+$ yarn run start
 ```
 
-The --enable-sandbox parameter is critical here. The sandbox is not enabled without it.
+General note on usage: the --enable-sandbox parameter is critical when running electron. The sandbox is not enabled without it.
+The npm/yarn start scripts take care of it, but it is fragile.
 
 ## packaging distributions
 

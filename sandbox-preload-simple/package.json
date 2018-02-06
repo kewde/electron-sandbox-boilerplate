@@ -1,15 +1,15 @@
 {
-  "name": "sandbox-preload-extended",
+  "name": "sandbox-preload-simple",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "electron --enable-sandbox .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kewde",
   "license": "MIT",
   "devDependencies": {
-    "electron": "brave/electron-prebuilt"
+    "electron": "^1.7.11"
   }
 }

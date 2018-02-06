@@ -7,6 +7,7 @@
 const {app, BrowserWindow} = require('electron');
 const path = require('path');
 
+const RENDERER_PATH = path.join(__dirname, 'renderer');
 let win
 app.on('ready', () => {
   win = new BrowserWindow({
@@ -36,14 +37,13 @@ app.on('ready', () => {
         The preload script binds a specific function to the window. The function has the ability to
         execute IPC messages without giving untrusted content complete access to ipcRenderer.
       */
-      preload: path.join(__dirname, 'preload-extended.js')
+      preload: path.join(RENDERER_PATH, 'preload-extended.js')
     }
   })
-  win.loadURL('file://' + __dirname + '/index.html')
+  win.loadURL('file://' + path.join(RENDERER_PATH, 'index.html'))
 })
 
 process.stdout.write("Main initialized");
-
 
 // In main process.
 const ipcMain = require('electron').ipcMain;

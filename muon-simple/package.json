@@ -2,14 +2,14 @@
   "name": "sandbox-preload-extended",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./muon/main.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "electron ./muon/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kewde",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^1.7.12"
+    "electron-prebuilt": "brave/electron-prebuilt"
   }
 }

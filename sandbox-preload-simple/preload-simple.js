@@ -13,7 +13,7 @@ const {ipcRenderer} = require('electron')
 
 /*
   Experimental security feature:
-        We set the global "require" variable to null after importing what we need. 
+        We set the global "require" variable to null after importing what we need.
         Given that there is an exploit within the preload context, they lost require atleast.
         Garbage collection should pick it up.
 */
@@ -29,18 +29,18 @@ function sendIPCMessage (rpc, arg) {
     For security reasons, you can not allow custom channels. You MUST use static predefined channels
     for communications between the renderer and the main process. There are certain IPC channels that
     an attacker can use to perform malicious acts.
-    
+
     VULNERABLE example:
     function sendIPCMessage(channel, arg) {
       return ipcRenderer.sendSync(channel, arg);
     }
-    
+
     The above example is vulnerable.
     app = window.sendMessage('ELECTRON_BROWSER_GET_BUILTIN', 'app');
     The code above exploits the vulnerable sendMessage function in such a way that it
     returns the handle to app, causing a privilege escalation.
-    
-    Lesson: use HARDCODED CHANNELS.  
+
+    Lesson: use HARDCODED CHANNELS.
   */
 
 // we want to allow our untrusted content to send messages to the main process, so we bind it to the window scope.
