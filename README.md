@@ -28,6 +28,8 @@ So we don't need a whitelist filter on the ipcRenderer in a preloader (like the 
 Also if you want to package your application into .exe, .deb, or w/e format for distribution then you'll want to use Muon.
 The electron-builder does not provide a way to start with `--enable-sandbox` as far as I know.
 
+**I suggest using Muon.**
+
 ## sandbox-preload-simple
 A very simple pre-load script that serves as a dummy for tutorial purposes.
 
@@ -56,7 +58,8 @@ I'm working on this, check https://github.com/kewde/electron-sandbox-boilerplate
 
 ## security assumptions
 
-A malicious attacker able to break into the scope / context (?) of the SafeIpcRenderer has full control over the ipcRenderer, and can thus enjoy the benefits of an unfiltered ipcRenderer.
+For the Electron sandbox-preload samples:
+If a malicious attacker is able to break into the scope / context of the SafeIpcRenderer then they have full control over the ipcRenderer, and can thus enjoy the benefits of an unfiltered ipcRenderer.
 
 ## purpose
 If you're dealing with potentially untrusted content (displaying videos,images, text, etc..) in your Electron application, then you should run it with the sandbox enabled. The sandbox provided by Chrome is considered among the best in the browser space, it has the ability to mitigate certain zeroday exploits within the Chrome browser engine (Blink) by restricting the ability of what the attacker can do.
