@@ -7,6 +7,19 @@ A simple code example of a sandboxed renderer process with the ability to commun
 
 If you're developing an electron application then I strongly recommend you to read the [Blackhat Electron Security Checklist by Cerettoni](https://www.blackhat.com/docs/us-17/thursday/us-17-Carettoni-Electronegativity-A-Study-Of-Electron-Security-wp.pdf).
 
+## table of contents
+
+- [security updates](https://github.com/kewde/electron-sandbox-boilerplate#security-updates)
+- [overview](https://github.com/kewde/electron-sandbox-boilerplate#overview)
+- [examples](https://github.com/kewde/electron-sandbox-boilerplate#examples)
+    * [muon-simple](https://github.com/kewde/electron-sandbox-boilerplate#muon-simple)
+    * [sandbox-preload-simple](https://github.com/kewde/electron-sandbox-boilerplate#sandbox-preload-simple)
+    * [sandbox-preload-extended](https://github.com/kewde/electron-sandbox-boilerplate#sandbox-preload-extended)
+- [usage](https://github.com/kewde/electron-sandbox-boilerplate#usage)
+- [packaging/distributing](https://github.com/kewde/electron-sandbox-boilerplate#packaging-distribution)
+- [security assumptions](https://github.com/kewde/electron-sandbox-boilerplate#security-assumptions)
+- [chromium sandbox explained](https://github.com/kewde/electron-sandbox-boilerplate#usage)
+
 ## security updates
 23th October 2018: Update Electron to 1.7.11 to fix [CVE-2018-1000006](https://electronjs.org/blog/protocol-handler-fix)
 
@@ -20,7 +33,9 @@ If you're an application developer looking to create a sandboxed application, I 
 | sandbox-preload-extended |      y  |          no              | Electron      |
 
 
-## muon-simple
+## examples
+
+### muon-simple
 After a lot of experimenting with electron, I've decided that it wasn't the best fit for my purpose.
 Unlike Electron, Muon exposes a 'pure' Chrome ipcRenderer to the renderer process that has no internal 'ELECTRON' channels that can be used to do evil stuff.
 So we don't need a whitelist filter on the ipcRenderer in a preloader (like the examples below).
@@ -30,10 +45,10 @@ The electron-builder does not provide a way to start with `--enable-sandbox` as 
 
 **I suggest using Muon.**
 
-## sandbox-preload-simple
+### sandbox-preload-simple
 A very simple pre-load script that serves as a dummy for tutorial purposes.
 
-## sandbox-preload-extended
+### sandbox-preload-extended
 A pretty good implementation of a secure preload script, and main process initialization (main.js). It's available in the subfolder named `sandbox-preload-extended`.
 You can use this version in production.
 
@@ -51,7 +66,7 @@ $ yarn run start
 General note on usage: the --enable-sandbox parameter is critical when running electron. The sandbox is not enabled without it.
 The npm/yarn start scripts take care of it, but it is fragile.
 
-## packaging distributions
+## packaging distribution
 
 **WARNING:** Due to the fact that --enable-sandbox is required, the current electron-builder does not enable you to sandbox your application properly.
 I'm working on this, check https://github.com/kewde/electron-sandbox-boilerplate/issues/7 for more information on the status.
@@ -61,7 +76,9 @@ I'm working on this, check https://github.com/kewde/electron-sandbox-boilerplate
 For the Electron sandbox-preload samples:
 If a malicious attacker is able to break into the scope / context of the SafeIpcRenderer then they have full control over the ipcRenderer, and can thus enjoy the benefits of an unfiltered ipcRenderer.
 
-## purpose
+## chromium sandbox explained
+
+### purpose
 If you're dealing with potentially untrusted content (displaying videos,images, text, etc..) in your Electron application, then you should run it with the sandbox enabled. The sandbox provided by Chrome is considered among the best in the browser space, it has the ability to mitigate certain zeroday exploits within the Chrome browser engine (Blink) by restricting the ability of what the attacker can do.
 
 The sandbox is disabled by default in Electron (not in the official Chromium/Chrome builds). Enabling the sandbox removes the ability to use NodeJS freely within the renderer process. Code that uses NodeJS should be moved from the renderer process to the main process. The sandboxed renderer process can then communicate commands through IPC, triggering the execution of these tasks (in the privileged browser process main.js), which in turn feeds back the return values to the unprivileged/sandboxed process. The renderer process is restricted to the tasks that you allow it to execute, however a clever attacker could potentially use them to his/her benefit so construct the functionalliy carefully. Give the renderer process the least amount of privilege, "make it dumb". 
@@ -89,7 +106,7 @@ main -> renderer: OK deleteFile CONFIG
 ```
 
 
-## terminology
+### terminology
 Electron is built on top of Chromium, a multiprocess browser.  What's so important you might wonder, multiprocess sounds really boring. Well you're probably right about that one. The reason for being a multiprocess browser is a simple one: security.
 
 The idea behind it is equally simple, we split the weak from the strong. Code has bugs, and those bugs are sometimes exploitable. The thing is, as the complexity of code rises, the numbers of bugs rises too. The engine, that turns html, css & js into a visible thing on your screen, is one damn complex thing.
