@@ -18,8 +18,11 @@ If you're developing an electron application then I strongly recommend you to re
 - [usage](https://github.com/kewde/electron-sandbox-boilerplate#usage)
 - [packaging/distributing](https://github.com/kewde/electron-sandbox-boilerplate#packaging-distribution)
 - [security assumptions](https://github.com/kewde/electron-sandbox-boilerplate#security-assumptions)
-- [chromium sandbox explained](https://github.com/kewde/electron-sandbox-boilerplate#usage)
-
+- [chromium sandbox explained](https://github.com/kewde/electron-sandbox-boilerplate#chromium-sandbox-explained)
+    * [purpose](https://github.com/kewde/electron-sandbox-boilerplate#purpose)
+    * [terminology](https://github.com/kewde/electron-sandbox-boilerplate#terminology)
+- [good reads on security](https://github.com/kewde/electron-sandbox-boilerplate#good-reads-on-security)
+    
 ## security updates
 23th October 2018: Update Electron to 1.7.11 to fix [CVE-2018-1000006](https://electronjs.org/blog/protocol-handler-fix)
 
@@ -139,6 +142,8 @@ The browser/main process does *not* execute in such a sandbox, so it wields a lo
 Electron is a bit of a different beast than Chromium, as it also provides you with a very powerful NodeJS API by default with your electron application. You might have already guessed it, the sandbox is disabled by default. 
 
 This example will re-enable the sandbox and deal with the limitations. We get a chance to do _some_ of the NodeJS API in the renderer process. This is due to the **preload.js script**, it runs in a private scope  but be carefully what you leak to the global scope (ie: attaching functions to the window) and it has _some_ NodeJS functionality. We prefer having a more privileged environment, so we only use the preload script to act as a bridge. The bridge that connects the renderer process with the browser process: making available the **ipcRenderer**. Check out preload-simple.js or preload-extended.js for more information. 
+
+## good reads on security
 
 ### Good reads about Chromium & their sandbox:
 
