@@ -3,11 +3,11 @@
 Whenever you're deploying your application, whether in a packaged form or running it from the command line, it's worth verifying that electron renderer is actually running in sandboxed mode.
 
 This document currently explains how the procedure to check if the sandbox is enabled for the following operating systems:
-- Linux (seccomp-bpf)
+- Linux (seccomp-bpf) (todo: namespace sandbox)
+- OSX
 
 Not supported:
 - Windows
-- OSX
 
 If you however do know a way of testing those too, then please update this document with the information.
 
@@ -53,3 +53,12 @@ If it returns 2 the it means the sandbox is enabled!
 1 //  SECCOMP_MODE_STRICT
 2 //  SECCOMP_MODE_FILTER
 ```
+
+## OSX
+* Launch Activity Monitor (available in `/Applications/Utilities`).
+* In Activity Monitor, choose View > Columns.
+* Ensure that the Sandbox menu item is checked.
+* In the Sandbox column, confirm that the value for the Quick Start app is Yes.
+* To make it easier to locate the app in Activity monitor, enter the name of the Quick Start app in the Filter field.
+
+src: https://developer.apple.com/library/content/documentation/Security/Conceptual/AppSandboxDesignGuide/AppSandboxQuickStart/AppSandboxQuickStart.html#//apple_ref/doc/uid/TP40011183-CH2-SW3
