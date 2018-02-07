@@ -89,7 +89,7 @@ The sandbox is disabled by default in Electron (not in the official Chromium/Chr
 Things renderer processes shouldn't be able to do:
 * execute/create a new (more) privileged process
 * freely read and write to whichever file they want
-* freely pick a channel to send IPC messages over (use a whitefilter instead)
+* freely pick a channel to send IPC messages over (use a whitefilter instead) (only for electron)
 
 Do not allow the renderer process to freely specify which files to access. The backend should have immutable file names & locations, or at the very least use a whitefilter for which files and directories the unprivileged process is permissioned to deal with.
 
