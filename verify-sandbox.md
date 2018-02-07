@@ -1,8 +1,20 @@
-Whenever you're deploying your application, whether in a packaged form or running it from the command line, it's worth verifying that electron is actually running in sandboxed mode.
+# verifying that the sandbox is enabled
 
-## verify sandbox is enabled (linux)
+Whenever you're deploying your application, whether in a packaged form or running it from the command line, it's worth verifying that electron renderer is actually running in sandboxed mode.
 
-Run the application.
+This document currently explains how the procedure to check if the sandbox is enabled for the following operating systems:
+- Linux (seccomp-bpf)
+
+Not supported:
+- Windows
+- OSX
+
+If you however do know a way of testing those too, then please update this document with the information.
+
+## verify seccomp-bpf sandbox (linux)
+
+Run the application you want to test.
+This can be from the actual source code or even a packaged distributable (.zip, .deb, snap..).
 
 We need to get a list of the process ids (PIDs for short).
 ```
