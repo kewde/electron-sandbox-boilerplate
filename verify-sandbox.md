@@ -11,6 +11,8 @@ Not supported:
 
 If you however do know a way of testing those too, then please update this document with the information.
 
+A good _indication_ that the sanbox _might_ be enabled is that the `--no-sandbox` is nowhere to be found. 
+
 ## verify seccomp-bpf sandbox (linux)
 
 Run the application you want to test.
