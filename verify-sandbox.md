@@ -39,10 +39,11 @@ We make sure that the `--no-sandbox` flag is NOWHERE to be found. If you see a -
 We grab the PID of the renderer process, which is `22394` in this particular instance.
 
 We check if the Seccomp BPF sandbox is running with the following command
-`
+
+```
 $ cat /proc/22394/status | grep "Seccomp"
 Seccomp:	2
-`
+```
 
 If it returns 2 the it means the sandbox is enabled!
 ```
