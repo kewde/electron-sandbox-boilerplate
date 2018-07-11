@@ -30,8 +30,8 @@ If you're developing an electron application then I strongly recommend you to re
 - [good reads on security](https://github.com/kewde/electron-sandbox-boilerplate#good-reads-on-security)
     
 ## security updates
-23th October 2018: Update Electron to 1.7.11 to fix [CVE-2018-1000006](https://electronjs.org/blog/protocol-handler-fix)
-23th October 2018: Update Electron to 1.7.11 to fix [CVE-2018-1000006](https://electronjs.org/blog/protocol-handler-fix)
+* 18th June 2018: Update Electron to 1.7.15 to fix [CVE-2018-1000006](https://electronjs.org/blog/protocol-handler-fix) again + non-executable stack.
+* 23th October 2018: Update Electron to 1.7.11 to fix [CVE-2018-1000006](https://electronjs.org/blog/protocol-handler-fix)
 
 ## overview
 If you're an application developer looking to create a sandboxed application, I highly recommend looking into [Muon](https://github.com/brave/muon).
