@@ -2,6 +2,12 @@
 
 > This repository has not been reviewed for security flaws by external parties, use at your own risk.
 
+
+
+## The latest releases of electron have more restrictive context isolation for preload scripts. These methods won't work without contextIsolation = false. Working on a better way.
+
+
+
 # electron-sandbox
 A simple code example of a sandboxed renderer process with the ability to communicate with backend (main.js) through IPC in a _secure_ manner.
 
@@ -24,6 +30,7 @@ If you're developing an electron application then I strongly recommend you to re
 - [good reads on security](https://github.com/kewde/electron-sandbox-boilerplate#good-reads-on-security)
     
 ## security updates
+23th October 2018: Update Electron to 1.7.11 to fix [CVE-2018-1000006](https://electronjs.org/blog/protocol-handler-fix)
 23th October 2018: Update Electron to 1.7.11 to fix [CVE-2018-1000006](https://electronjs.org/blog/protocol-handler-fix)
 
 ## overview
