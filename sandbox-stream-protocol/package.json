@@ -1,0 +1,15 @@
+{
+  "name": "sandbox-preload-simple",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron --enable-sandbox .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kewde",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "1.8.4"
+  }
+}

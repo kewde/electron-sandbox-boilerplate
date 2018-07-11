@@ -1,0 +1,98 @@
+<input type="button" value="xhr, return buffer!" onclick="test_buffer();" />
+<input type="button" value="xhr, return stream!" onclick="test_stream();" />
+<input type="button" value="fetch, return stream!" onclick="test_stream_v2();" />
+<input type="button" value="fetch, intercept http!" onclick="test_http_intercept();" />
+
+<script>
+    /**
+    * Buffer + XHR: 
+    * Works perfectly fine.
+    */
+    function test_buffer() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onerror = function () { console.log("[xhttp] Fatal Error.") };
+        xhttp.onreadystatechange = function () {
+            console.log(this.readyState)
+            console.log(this.response);
+            if (this.readyState == 4 && this.status == 200) {
+                alert('response!')
+            }
+        };
+        xhttp.open("GET", "buffer://meplz", true);
+        xhttp.send(null);
+    }
+
+    /**
+    * Stream + XHR: 
+    * Status code 200 but it never reaches past state 1.
+    * It should emit a status 2, which are chunks being received.
+    * Devtools shows "pending" for the request :/
+    */
+    function test_stream() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onerror = function () { console.log("[xhttp] Fatal Error.") };
+        xhttp.onreadystatechange = function () {
+            console.log(this.readyState)
+            console.log(this.response);
+            if (this.readyState == 4 && this.status == 200) {
+                alert('response!')
+            }
+        };
+        xhttp.open("GET", "stream://meplz", true);
+        xhttp.send(null);
+    }
+
+    /**
+    * Stream + Fetch: 
+    * Problem: Fetch only allows "http" and "https" protocols.
+    * so it errors with warning:
+    *  Fetch API cannot load stream://test/. URL scheme must be "http" or "https" for CORS request.
+    */
+    function test_stream_v2() {
+        fetch('stream://test')
+            .then(
+            function (response) {
+                if (response.status !== 200) {
+                    console.log('Looks like there was a problem. Status Code: ' +
+                        response.status);
+                    return;
+                }
+
+                // Examine the text in the response
+                response.json().then(function (data) {
+                    console.log(data);
+                });
+            }
+            )
+            .catch(function (err) {
+                console.log('Fetch Error :-S', err);
+            });
+    }
+
+    /**
+    * Intercept HTTP + Fetch: 
+    * Problem: Same as Stream + XHR
+    * It doesn't complain anymore about the "http" or CORS, but
+    * still has the same issue as with the XHR, no updates.
+    */
+    function test_http_intercept() {
+        fetch('http://test')
+            .then(
+            function (response) {
+                if (response.status !== 200) {
+                    console.log('Looks like there was a problem. Status Code: ' +
+                        response.status);
+                    return;
+                }
+
+                // Examine the text in the response
+                response.json().then(function (data) {
+                    console.log(data);
+                });
+            }
+            )
+            .catch(function (err) {
+                console.log('Fetch Error :-S', err);
+            });
+    }
+</script>
