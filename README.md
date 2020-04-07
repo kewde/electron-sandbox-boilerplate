@@ -4,7 +4,7 @@
 
 
 
-## The latest releases of electron have more restrictive context isolation for preload scripts. These methods won't work without contextIsolation = false. Working on a better way.
+## THIS REPOSITORY IS NOT UNDER ACTIVE DEVELOPMENT ANYMORE AND SHOULD ONLY BE USED AS A HISTORICAL RECORD OF MY OWN NOTES. PLEASE TAKE A LOOK AT [secure-electron-template](https://github.com/reZach/secure-electron-template) FOR A MORE ACTIVELY MAINTAINED PROJECT.
 
 
 
